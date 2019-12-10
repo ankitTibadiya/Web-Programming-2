@@ -4,13 +4,15 @@ import { firestore } from '../../index'
 const createPost = post => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     // async call to database
+    const profile = getState().firebase.profile;
+    const authorId = getState().firebase.auth.uid;
     firestore
       .collection("posts")
       .add({
         ...post,
-        authorFirstName: "Luke",
-        authorLastName: "Skywalker",
-        authorId: 12345,
+        authorFirstName: profile.firstName,
+        authorLastName: profile.lastName,
+        authorId: authorId,
         createdAt: new Date()
       })
       .then(() => {
