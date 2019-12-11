@@ -1,10 +1,4 @@
-const initState = {
-  posts: [
-    { id: "1", title: "Title-1", content: "blah...." },
-    { id: "2", title: "Title-2", content: "blah...." },
-    { id: "3", title: "Title-3", content: "blah...." }
-  ]
-};
+const initState = {};
 
 const postReducer = (state = initState, action) => {
   switch (action.type) {

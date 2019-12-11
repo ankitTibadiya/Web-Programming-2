@@ -18,7 +18,7 @@ const PostDetails = props => {
             <div>
               Posted by {post.authorFirstName} {post.authorLastName}
             </div>
-            <div>{moment(post.createdAt.toDate()).fromNow()}</div>
+            <div>{moment(post.createdAt.toDate()).calendar()}</div>
           </div>
         </div>
       </div>

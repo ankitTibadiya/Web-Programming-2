@@ -6,6 +6,7 @@ class CreatePost extends Component {
   state = {
     title: "",
     content: "",
+    votes: 0,
     image: null,
     video: null,
     url: null
@@ -18,7 +19,7 @@ class CreatePost extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.createPost(this.state);
-    this.props.history.push("/dashboard");
+    this.props.history.push("/");
   };
   render() {
     return (

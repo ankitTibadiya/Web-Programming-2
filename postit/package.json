@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "algoliasearch": "^3.35.1",
     "eslint-plugin-react": "^7.16.0",
     "firebase": "^7.4.0",
     "moment": "^2.24.0",
