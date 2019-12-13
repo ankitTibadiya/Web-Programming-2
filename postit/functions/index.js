@@ -5,34 +5,34 @@ const firestore = admin.firestore();
 const settings = { timestampsInSnapshots: true };
 firestore.settings(settings);
 
-const algoliasearch = require("algoliasearch");
-const APP_ID = functions.config().algolia.app;
-const ADMIN_ID = functions.config().algolia.key;
+// const algoliasearch = require("algoliasearch");
+// const APP_ID = functions.config().algolia.app;
+// const ADMIN_ID = functions.config().algolia.key;
 
-const client = algoliasearch(APP_ID, ADMIN_ID);
-const index = client.initIndex("posts");
+// const client = algoliasearch(APP_ID, ADMIN_ID);
+// const index = client.initIndex("posts");
 
-exports.addToIndex = functions.firestore
-  .document("posts/{postId}")
-  .onCreate(snapshot => {
-    const data = snapshot.data();
-    const objectID = snapshot.id;
+// exports.addToIndex = functions.firestore
+//   .document("posts/{postId}")
+//   .onCreate(snapshot => {
+//     const data = snapshot.data();
+//     const objectID = snapshot.id;
 
-    return index.addObject({ ...data, objectID });
-  });
+//     return index.addObject({ ...data, objectID });
+//   });
 
-exports.updateIndex = functions.firestore
-  .document("posts/{postId}")
-  .onUpdate(change => {
-    const newdata = change.after.data();
-    const objectID = change.after.objectID;
+// exports.updateIndex = functions.firestore
+//   .document("posts/{postId}")
+//   .onUpdate(change => {
+//     const newdata = change.after.data();
+//     const objectID = change.after.objectID;
 
-    return index.saveObject({ ...newdata, objectID });
-  });
+//     return index.saveObject({ ...newdata, objectID });
+//   });
 
-exports.deleteFromIndex = functions.firestore
-  .document("posts/{postId}")
-  .onDelete(snapshot => index.deleteObject(snapshot.id));
+// exports.deleteFromIndex = functions.firestore
+//   .document("posts/{postId}")
+//   .onDelete(snapshot => index.deleteObject(snapshot.id));
 
 const createNotification = async notification => {
   const doc = await firestore.collection("notifications").add(notification);
@@ -65,3 +65,16 @@ exports.userJoined = functions.auth.user().onCreate(async user => {
   };
   return createNotification(notification);
 });
+
+exports.userCommented = functions.firestore
+  .document("posts/{postId}/comments/{comment}")
+  .onCreate(doc => {
+    const comment = doc.data();
+    const notification = {
+      content: "Added a new comment",
+      user: `${comment.authorFirstName} ${comment.authorLastName}`,
+      time: admin.firestore.FieldValue.serverTimestamp()
+    };
+
+    return createNotification(notification);
+  });
