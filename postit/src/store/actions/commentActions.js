@@ -1,32 +1,36 @@
+// import PostSummary from "../../components/posts/PostSummary";
 import { firestore } from "../../index";
 
-const createPost = post => {
+const createComment = (comment, id) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     // async call to database
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
     firestore
       .collection("posts")
+      .doc(id)
+      .collection("comments")
       .add({
-        ...post,
+        ...comment,
+        postId: id,
         authorFirstName: profile.firstName,
         authorLastName: profile.lastName,
         authorId: authorId,
-        createdAt: new Date()
+        postedAt: new Date()
       })
       .then(() => {
         dispatch({
-          type: "CREATE_POST",
-          post
+          type: "CREATE_COMMENT",
+          comment
         });
       })
       .catch(err => {
         dispatch({
-          type: "CREATE_POST_ERROR",
+          type: "CREATE_COMMENT_ERROR",
           err
         });
       });
   };
 };
 
-export default createPost;
+export default createComment;

@@ -21,7 +21,7 @@ class Register extends Component {
   };
   render() {
     const { authError, auth } = this.props;
-    if (auth.uid) return <Redirect to="/dashboard" />;
+    if (auth.uid) return <Redirect to="/" />;
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit} className="white">

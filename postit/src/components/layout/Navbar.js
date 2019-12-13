@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 
 class Navbar extends Component {
   render() {
-    console.log("props:",this.props)
     const { auth, profile } = this.props
     const  links  = auth.uid ? <Loggedin profile={ profile } /> : <Loggedout />;
     return (
@@ -23,7 +22,6 @@ class Navbar extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     auth: state.firebase.auth,
     profile: state.firebase.profile

@@ -36,6 +36,7 @@ class CreatePost extends Component {
                 className="title"
                 onChange={this.handleChange}
                 placeholder="Title"
+                required
               />
             </div>
           </div>
