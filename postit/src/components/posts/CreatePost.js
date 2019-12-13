@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import createPost from "../../store/actions/postActions";
+import {createPost} from "../../store/actions/postActions";
 
 class CreatePost extends Component {
   state = {

@@ -1,6 +1,7 @@
 import { firestore } from "../../index";
+import { type } from "os";
 
-const createPost = post => {
+export const createPost = post => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     // async call to database
     const profile = getState().firebase.profile;
@@ -29,4 +30,28 @@ const createPost = post => {
   };
 };
 
-export default createPost;
+export const addVote = (post, vote) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    // async call to database
+    console.log("postV", post);
+    const profile = getState().firebase.profile;
+    const authorId = getState().firebase.auth.uid;
+    firestore
+      .collection("posts")
+      .doc(post)
+      .update({
+        votes: vote
+      })
+      .then(() => {
+        dispatch({
+          type: "ADD_VOTE"
+        });
+      })
+      .catch(err => {
+        dispatch({
+          type: "ADD_VOTE_ERROR",
+          err
+        });
+      });
+  };
+};
