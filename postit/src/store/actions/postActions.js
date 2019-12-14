@@ -1,5 +1,4 @@
 import { firestore } from "../../index";
-import { type } from "os";
 
 export const createPost = post => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
@@ -34,8 +33,6 @@ export const addVote = (post, vote) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     // async call to database
     console.log("postV", post);
-    const profile = getState().firebase.profile;
-    const authorId = getState().firebase.auth.uid;
     firestore
       .collection("posts")
       .doc(post)

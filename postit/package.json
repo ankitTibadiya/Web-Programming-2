@@ -2,8 +2,10 @@
   "name": "postit",
   "version": "0.1.0",
   "private": true,
+  "main": "public/electron.js",
   "dependencies": {
     "algoliasearch": "^3.35.1",
+    "electron-packager": "^14.1.1",
     "eslint-plugin-react": "^7.16.0",
     "firebase": "^7.4.0",
     "moment": "^2.24.0",
@@ -21,7 +23,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron-dev": "concurrently \"BROWSER=none npm run start\" \"wait-on http://localhost:3000 && electron . --disable-gpu\"",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=public/postIt.png --prune=true --out=release-builds",
+    "package-win": "electron-packager . postIt --overwrite --asar=true --platform=win32 --arch=ia32 --icon=public/postIt.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"postIt\"",
+    "package-linux": "electron-packager . postIt --overwrite --asar=true --platform=linux --arch=x64 --icon=public/postIt.png --prune=true --out=release-builds"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -39,7 +45,12 @@
     ]
   },
   "devDependencies": {
+    "concurrently": "^5.0.1",
+    "electron": "^7.1.5",
+    "electron-builder": "^21.2.0",
+    "electron-is-dev": "^1.1.0",
     "eslint": "^6.7.2",
-    "eslint-plugin-promise": "^4.2.1"
+    "eslint-plugin-promise": "^4.2.1",
+    "wait-on": "^3.3.0"
   }
 }
