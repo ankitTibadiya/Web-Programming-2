@@ -36,7 +36,7 @@ class PostDetails extends Component {
         </div>
       );
     } 
-  }
+  };
   renderVideo =()=>{
     if (this.props.post.videourl==""){
       return null;
@@ -48,7 +48,6 @@ class PostDetails extends Component {
         </div>
       );
     } 
-  }
   };
   editPost = e => {
     e.preventDefault();
