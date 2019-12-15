@@ -52,3 +52,25 @@ export const addVote = (post, vote) => {
       });
   };
 };
+
+export const deletePost = post => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    // async call to database
+    console.log(post)
+    firestore
+      .collection("posts")
+      .doc(post)
+      .delete()
+      .then(() => {
+        dispatch({
+          type: "DELETE_POST"
+        });
+      })
+      .catch(err => {
+        dispatch({
+          type: "DELETE_POST_ERROR",
+          err
+        });
+      });
+  };
+};
