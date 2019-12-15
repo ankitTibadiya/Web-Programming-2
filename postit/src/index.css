@@ -1,13 +1,43 @@
 body {
+  background-image: url("http://starkovtattoo.spb.ru/images/200/DSC100224440.png");
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.main {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: auto;
+}
+
+form{
+  padding: 20px;
+  margin-top: 60px;
+  background: rgba(10, 9, 9, 0.849);
+}
+
+form button, form h5{
+  margin: 20px;
+}
+.newComment {
+  padding-bottom: 20px;
+}
+.card { background-color: rgba(252, 248, 248, 0.411); }
+.card-header, .card-footer { opacity: 0}

@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import createPost from "../../store/actions/postActions";
+import { createPost } from "../../store/actions/postActions";
 
 class CreatePost extends Component {
   state = {
     title: "",
     content: "",
+    votes: 0,
     image: null,
     video: null,
     url: null
@@ -18,13 +19,14 @@ class CreatePost extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.createPost(this.state);
-    this.props.history.push("/dashboard");
+    this.props.history.push("/");
   };
+
   render() {
     return (
-      <div className="container">
-        <form onSubmit={this.handleSubmit} className="white">
-          <h5 className="grey-text text-darken-3">Create a post</h5>
+      <div className="container padding">
+        <form onSubmit={this.handleSubmit} className="newPost">
+          <h5 className="white-text text-darken-3">Create a post</h5>
           <div className="row">
             <div className="input-field col s6">
               <label htmlFor="title"></label>
@@ -32,9 +34,10 @@ class CreatePost extends Component {
                 type="text"
                 data-length="300"
                 id="title"
-                className="title"
+                className="title white-text"
                 onChange={this.handleChange}
                 placeholder="Title"
+                required
               />
             </div>
           </div>
@@ -44,7 +47,7 @@ class CreatePost extends Component {
               <textarea
                 type="text"
                 id="content"
-                className="materialize-textarea"
+                className="materialize-textarea white-text"
                 onChange={this.handleChange}
                 placeholder="Text(optional)"
               />
@@ -54,11 +57,6 @@ class CreatePost extends Component {
             <div className="input-field">
               <button className="btn blue lighten-1 blue z-depth-0">
                 Post
-              </button>
-            </div>
-            <div className="input-field">
-              <button className="btn blue lighten-1 blue z-depth-0">
-                Cancel
               </button>
             </div>
           </div>

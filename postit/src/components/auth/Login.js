@@ -19,18 +19,28 @@ class Login extends Component {
   };
   render() {
     const { authError, auth } = this.props;
-    if(auth.uid) return <Redirect to = '/dashboard' />
+    if (auth.uid) return <Redirect to="/" />;
     return (
       <div className="container">
-        <form onSubmit={this.handleSubmit} className="white">
-          <h5 className="grey-text text-darken-3">Sign In</h5>
+        <form onSubmit={this.handleSubmit} className="loginForm">
+          <h5 className="white-text text-darken-3">Sign In</h5>
           <div className="input-field">
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" onChange={this.handleChange} />
+            <input
+              type="email"
+              id="email"
+              className="white-text"
+              onChange={this.handleChange}
+            />
           </div>
           <div className="input-field">
             <label htmlFor="password">Password</label>
-            <input type="password" id="password" onChange={this.handleChange} />
+            <input
+              type="password"
+              id="password"
+              className="white-text"
+              onChange={this.handleChange}
+            />
           </div>
           <div className="input-field">
             <button className="btn blue lighten-1 blue z-depth-0">Login</button>

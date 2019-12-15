@@ -1,7 +1,6 @@
-// import PostSummary from "../../components/posts/PostSummary";
-import { firestore } from '../../index'
+import { firestore } from "../../index";
 
-const createPost = post => {
+export const createPost = post => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     // async call to database
     const profile = getState().firebase.profile;
@@ -30,4 +29,48 @@ const createPost = post => {
   };
 };
 
-export default createPost;
+export const addVote = (post, vote) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    // async call to database
+    console.log("postV", post);
+    firestore
+      .collection("posts")
+      .doc(post)
+      .update({
+        votes: vote
+      })
+      .then(() => {
+        dispatch({
+          type: "ADD_VOTE"
+        });
+      })
+      .catch(err => {
+        dispatch({
+          type: "ADD_VOTE_ERROR",
+          err
+        });
+      });
+  };
+};
+
+export const deletePost = post => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    // async call to database
+    console.log(post)
+    firestore
+      .collection("posts")
+      .doc(post)
+      .delete()
+      .then(() => {
+        dispatch({
+          type: "DELETE_POST"
+        });
+      })
+      .catch(err => {
+        dispatch({
+          type: "DELETE_POST_ERROR",
+          err
+        });
+      });
+  };
+};
