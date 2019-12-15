@@ -12,13 +12,16 @@ class PostDetails extends Component {
     console.log("POstSumma", this.props.id, this.props.post.votes);
     e.preventDefault();
     this.props.addVote(this.props.id, this.props.post.votes + 1);
+    // this.refs.btn1.setAttribute("disabled","disabled")
   };
   downVote = e => {
     e.preventDefault();
     this.props.addVote(this.props.id, this.props.post.votes - 1);
+    // this.refs.btn.setAttribute("disabled","disabled")
   };
   render() {
     const { post } = this.props;
+
     if (post) {
       return (
         <div className="container section post-details">
@@ -26,13 +29,18 @@ class PostDetails extends Component {
             <div className="col m1 l1">
               <div className="action">
                 <button
+                  ref="btn1"
                   className="btn-floating btn-small waves-effect waves-light green"
                   onClick={this.upVote}
                 >
                   <i className="material-icons">arrow_upward</i>
                 </button>
-                <p className="grey-text">{post.votes}</p>
+                <p className="white-text">
+                  {"  "}
+                  {post.votes}
+                </p>
                 <button
+                  ref="btn"
                   className="btn-floating btn-small waves-effect waves-light red"
                   onClick={this.downVote}
                 >
@@ -44,14 +52,17 @@ class PostDetails extends Component {
               <div className="card z-depth-0">
                 <div className="card-content">
                   <span className="card-title"> {post.title}</span>
-                  <p>{post.content}</p>
-                </div>
-                <div className="card-action ligthen-4 grey-text">
-                  <div>
+                  <p className="card-content">{post.content}</p>
+                  <div className="white-text lighten-2">
                     Posted by {post.authorFirstName} {post.authorLastName}
                   </div>
-                  <div>{moment(post.createdAt.toDate()).calendar()}</div>
+                  <div className="white-text lighten-2">
+                    {" "}
+                    {moment(post.createdAt.toDate()).calendar()}
+                  </div>
                 </div>
+                {/* <div className="card-action white-text text-darken-3"> */}
+
                 <CreateComment id={this.props.id} />
                 {/* Comments */}
               </div>

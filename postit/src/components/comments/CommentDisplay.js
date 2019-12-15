@@ -8,7 +8,7 @@ const CommentDisplay = ({ comment }) => {
         <div className="card-content">
           <p>{comment.content}</p>
         </div>
-        <div className="card-action ligthen-4 grey-text">
+        <div className="card-action ligthen-4 white-text">
           <div>
             commented by {comment.authorFirstName}
             {comment.authorLastName}

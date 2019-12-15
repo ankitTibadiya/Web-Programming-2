@@ -65,16 +65,3 @@ exports.userJoined = functions.auth.user().onCreate(async user => {
   };
   return createNotification(notification);
 });
-
-exports.userCommented = functions.firestore
-  .document("posts/{postId}/comments/{comment}")
-  .onCreate(doc => {
-    const comment = doc.data();
-    const notification = {
-      content: "Added a new comment",
-      user: `${comment.authorFirstName} ${comment.authorLastName}`,
-      time: admin.firestore.FieldValue.serverTimestamp()
-    };
-
-    return createNotification(notification);
-  });

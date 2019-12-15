@@ -23,15 +23,15 @@ class CreateComment extends Component {
   };
   render() {
     return (
-      <div className="container">
-        <form onSubmit={this.handleSubmit} className="white">
+      <div className="container newComment">
+        <form onSubmit={this.handleSubmit} className="newComment">
           <div className="row">
             <div className="input-field">
               <label htmlFor="content"></label>
               <textarea
                 type="text"
                 id="content"
-                className="materialize-textarea"
+                className="materialize-textarea white-text"
                 onChange={this.handleChange}
                 placeholder="Add a comment here..."
                 required

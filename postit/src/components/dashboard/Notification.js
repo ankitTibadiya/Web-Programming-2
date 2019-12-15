@@ -14,9 +14,9 @@ class Notification extends Component {
                 notifications.map(item => {
                   return (
                     <li key={item.id}>
-                      <span className="blue-grey-text">{item.user} </span>
+                      <span className="orange-text">{item.user} </span>
                       <span>{item.content}</span>
-                      <div className="grey-text note-date">
+                      <div className="white-text note-date">
                         {moment(item.time.toDate()).fromNow()}
                       </div>
                     </li>

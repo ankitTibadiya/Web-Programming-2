@@ -13,7 +13,7 @@ class CommentDetails extends Component {
         commentsList.push([key, value]);
       }
       return (
-        <div className="post-list section">
+        <div className="comment-list section">
           {commentsList &&
             commentsList.map(comment => {
               return <CommentDisplay key={comment[0]} comment={comment[1]} />;

@@ -10,7 +10,7 @@ class Navbar extends Component {
     const { auth, profile } = this.props;
     const links = auth.uid ? <Loggedin profile={profile} /> : <Loggedout />;
     return (
-      <nav className="nav-wrapper grey darken-3">
+      <nav className="nav-wrapper transparent">
         <div className="container">
           <Link to="/" className="brand-logo">
             <img

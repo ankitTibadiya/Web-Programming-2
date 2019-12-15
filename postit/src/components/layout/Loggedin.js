@@ -18,7 +18,7 @@ class Loggedin extends Component {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/" className="btn btn-floating blue lighten-1">
+          <NavLink to="/profile" className="btn btn-floating blue lighten-1">
             {this.props.profile.initials}
           </NavLink>
         </li>
