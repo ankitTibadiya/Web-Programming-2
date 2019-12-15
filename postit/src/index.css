@@ -41,3 +41,10 @@ form button, form h5{
 }
 .card { background-color: rgba(252, 248, 248, 0.411); }
 .card-header, .card-footer { opacity: 0}
+
+.img-style{
+  display: flex;
+  max-width: fit-content;
+  border:2px solid #a5a2a2;
+  height:315px;
+}

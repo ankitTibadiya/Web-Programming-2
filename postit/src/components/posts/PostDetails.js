@@ -23,12 +23,37 @@ class PostDetails extends Component {
   deletePost = e => {
     e.preventDefault();
     this.props.deletePost(this.props.id);
+    return <Redirect to="/" />;
+  }
+  renderImage =()=>{
+    if (this.props.post.imageurl==""){
+      return null;
+    }
+    else {
+      return (
+        <div className='img-style'>
+          <img src={this.props.post.imageurl} width="420" height="311"/>
+        </div>
+      );
+    } 
+  }
+  renderVideo =()=>{
+    if (this.props.post.videourl==""){
+      return null;
+    }
+    else {
+      return (
+        <div >
+          <iframe width="420" height="315" src={this.props.post.videourl}>Video</iframe>
+        </div>
+      );
+    } 
+  }
   };
   editPost = e => {
     e.preventDefault();
     this.props.history.push(`/postEdit/${this.props.id}`)
   };
-  
   render() {
     const { post, userId } = this.props;
 
@@ -72,6 +97,7 @@ class PostDetails extends Component {
                   {"  "}
                   {post.votes}
                 </p>
+
                 <button
                   ref="btn"
                   className="btn-floating btn-small waves-effect waves-light red"
@@ -89,6 +115,10 @@ class PostDetails extends Component {
                     {deleteButton}
                     {editButton}
                   </span>
+                  {this.renderImage()}
+                  <br>
+                  </br>
+                  {this.renderVideo()}
                   <p className="card-content">{post.content}</p>
                   <div className="white-text lighten-2">
                     Posted by {post.authorFirstName} {post.authorLastName}

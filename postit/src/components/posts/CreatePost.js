@@ -7,8 +7,8 @@ class CreatePost extends Component {
     title: "",
     content: "",
     votes: 0,
-    image: null,
-    video: null,
+    imageurl: "",
+    videourl: "",
     url: null
   };
   handleChange = e => {
@@ -50,6 +50,30 @@ class CreatePost extends Component {
                 className="materialize-textarea white-text"
                 onChange={this.handleChange}
                 placeholder="Text(optional)"
+              />
+            </div>
+          </div>
+          <div className="row">
+            <div className="input-field">
+              <label htmlFor="content"></label>
+              <textarea
+                type="text"
+                id="imageurl"
+                className="materialize-textarea white-text"
+                onChange={this.handleChange}
+                placeholder="Image url (optional)"
+              />
+            </div>
+          </div>
+          <div className="row">
+            <div className="input-field">
+              <label htmlFor="content"></label>
+              <textarea
+                type="text"
+                id="videourl"
+                className="materialize-textarea white-text"
+                onChange={this.handleChange}
+                placeholder="Video url(optional)"
               />
             </div>
           </div>
