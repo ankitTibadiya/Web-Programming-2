@@ -56,7 +56,7 @@ export const addVote = (post, vote) => {
 export const deletePost = post => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     // async call to database
-    console.log(post)
+    console.log(post);
     firestore
       .collection("posts")
       .doc(post)
@@ -69,6 +69,31 @@ export const deletePost = post => {
       .catch(err => {
         dispatch({
           type: "DELETE_POST_ERROR",
+          err
+        });
+      });
+  };
+};
+
+export const updatePost = (post,id) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    // async call to database
+    console.log(post);
+    firestore
+      .collection("posts")
+      .doc(id)
+      .update({
+        ...post,
+        updatedAt: new Date()
+      })
+      .then(() => {
+        dispatch({
+          type: "UPDATE_POST"
+        });
+      })
+      .catch(err => {
+        dispatch({
+          type: "UPDATE_POST_ERROR",
           err
         });
       });

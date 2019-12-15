@@ -52,6 +52,20 @@ exports.postCreated = functions.firestore
     return createNotification(notification);
   });
 
+exports.postUpdated = functions.firestore
+  .document("posts/{postId}")
+  .onUpdate(change => {
+    const newPost = change.after.data();
+    console.log("post", newPost);
+    const notification = {
+      content: "updated a post",
+      user: `${newPost.authorFirstName} ${newPost.authorLastName}`,
+      time: admin.firestore.FieldValue.serverTimestamp()
+    };
+
+    return createNotification(notification);
+  });
+
 exports.userJoined = functions.auth.user().onCreate(async user => {
   const doc = await firestore
     .collection("users")

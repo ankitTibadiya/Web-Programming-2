@@ -7,6 +7,7 @@ import Login from "./auth/Login";
 import Register from "./auth/Register";
 import CreatePost from "./posts/CreatePost";
 import Profile from "./auth/Profile";
+import PostEdit from "./posts/PostEdit";
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
             <Route path="/register" component={Register} />
             <Route path="/createpost" component={CreatePost} />
             <Route path="/profile" component={Profile} />
+            <Route path="/postEdit/:id" component={PostEdit} />
           </Switch>
         </div>
       </BrowserRouter>

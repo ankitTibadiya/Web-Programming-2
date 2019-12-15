@@ -6,7 +6,7 @@ import moment from "moment";
 import { addVote, deletePost } from "../../store/actions/postActions";
 import CreateComment from "../comments/CreateComment";
 import CreateDetails from "../comments/CommentDetails";
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from "react-router-dom";
 
 class PostDetails extends Component {
   upVote = e => {
@@ -49,7 +49,11 @@ class PostDetails extends Component {
       );
     } 
   }
-
+  };
+  editPost = e => {
+    e.preventDefault();
+    this.props.history.push(`/postEdit/${this.props.id}`)
+  };
   render() {
     const { post, userId } = this.props;
 
@@ -57,23 +61,23 @@ class PostDetails extends Component {
       let editButton = null;
       let deleteButton = null;
       if (userId === post.authorId) {
-        editButton = (
-          <button
-            ref="btn"
-            className="btn-floating btn-small waves-effect waves-light grey right"
-            onClick={this.downVote}
-          >
-            <i className="material-icons">edit</i>
-          </button>
-        );
         deleteButton = (
           <button
             ref="btn"
             className="btn-floating btn-small waves-effect waves-light grey right"
             onClick={this.deletePost}
-            style={{ marginRight: "10px" }}
           >
             <i className="material-icons">delete</i>
+          </button>
+        );
+        editButton = (
+          <button
+            ref="btn"
+            className="btn-floating btn-small waves-effect waves-light grey right"
+            style={{ marginRight: "10px" }}
+            onClick={this.editPost}
+          >
+            <i className="material-icons">edit</i>
           </button>
         );
       }
@@ -108,8 +112,8 @@ class PostDetails extends Component {
                 <div className="card-content">
                   <span className="card-title">
                     {post.title}
-                    {editButton}
                     {deleteButton}
+                    {editButton}
                   </span>
                   {this.renderImage()}
                   <br>
@@ -159,7 +163,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     addVote: (post, vote) => dispatch(addVote(post, vote)),
-    deletePost: (post) => dispatch(deletePost(post))
+    deletePost: post => dispatch(deletePost(post))
   };
 };
 
