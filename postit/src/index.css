@@ -48,3 +48,7 @@ form button, form h5{
   border:2px solid #a5a2a2;
   height:315px;
 }
+.position{
+  position: relative;
+  margin-left: -100px
+}

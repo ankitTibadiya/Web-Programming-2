@@ -9,7 +9,7 @@ class PostSummary extends Component {
         <div className="row">
           <div className="col m1 l1">
             <i className="material-icons">arrow_upward</i>
-            <p className="white-text">{post.votes}</p>
+            <p className="white-text" style={{ position:"relative", marginLeft:"9px" }}>{post.votes}</p>
             <i className="material-icons">arrow_downward</i>
           </div>
           <div className="col s12 m11">

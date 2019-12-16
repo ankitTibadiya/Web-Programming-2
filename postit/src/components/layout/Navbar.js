@@ -12,11 +12,11 @@ class Navbar extends Component {
     return (
       <nav className="nav-wrapper transparent">
         <div className="container">
-          <Link to="/" className="brand-logo">
-            <img
+          <Link to="/" className="brand-logo" style={{ position:"relative", marginLeft:"-100px" }}  >
+            <img style={{ marginBottom: "-9px" }}
               src={postIticon}
               alt="icon"
-              className="circle responsive-img"
+              className="circle responsive-img" 
               height="35px"
               width="35px"
             />{" "}

@@ -11,9 +11,15 @@ class PostEdit extends Component {
   };
   handleChange = e => {
     this.setState({
+      ...this.props.post,
       [e.target.id]: e.target.value
     });
   };
+  // handleSubmit = e => {
+  //   e.preventDefault();
+  //   this.props.updatePost(this.state, this.props.id);
+  //   this.props.history.push(`/post/${this.props.id}`);
+  // };
   handleSubmit = e => {
     e.preventDefault();
     this.props.updatePost(this.state, this.props.id);
@@ -56,6 +62,9 @@ class PostEdit extends Component {
             <div className="input-field">
               <button className="btn blue lighten-1 blue z-depth-0">
                 Update
+              </button>
+              <button className="btn blue lighten-1 blue z-depth-0">
+                Cancel
               </button>
             </div>
           </div>
