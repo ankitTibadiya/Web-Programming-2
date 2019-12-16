@@ -13,7 +13,8 @@ class Dashboard extends Component {
     return (
       <div className="dashboard">
         <div className="row">
-          <div className="col s8 m6">
+          {/* <div className="col s8 m6"> */}
+          <div className="col s8 s6 s4 s3">
             <PostList posts={posts} />
           </div>
           <div className="col s4 m3 offset-m1">
