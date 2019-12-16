@@ -11,8 +11,8 @@ class Navbar extends Component {
     const links = auth.uid ? <Loggedin profile={profile} /> : <Loggedout />;
     return (
       <nav className="nav-wrapper transparent">
-        <div className="container">
-          <Link to="/" className="brand-logo" style={{ position:"relative", marginLeft:"-100px" }}  >
+        <div className="container" style={{ width: "-webkit-fill-available" }} >
+          <Link to="/" className="brand-logo  position"  >
             <img style={{ marginBottom: "-9px" }}
               src={postIticon}
               alt="icon"

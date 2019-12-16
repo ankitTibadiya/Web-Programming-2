@@ -50,5 +50,5 @@ form button, form h5{
 }
 .position{
   position: relative;
-  margin-left: -100px
+  left: 10% !important;
 }
