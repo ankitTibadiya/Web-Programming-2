@@ -6,7 +6,7 @@ import moment from "moment";
 import { addVote, deletePost } from "../../store/actions/postActions";
 import CreateComment from "../comments/CreateComment";
 import CreateDetails from "../comments/CommentDetails";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class PostDetails extends Component {
   upVote = e => {
@@ -24,34 +24,48 @@ class PostDetails extends Component {
     e.preventDefault();
     this.props.deletePost(this.props.id);
     return <Redirect to="/" />;
-  }
-  renderImage =()=>{
-    if (this.props.post.imageurl==""){
-      return null;
-    }
-    else {
-      return (
-        <div className='img-style'>
-          <img src={this.props.post.imageurl} width="420" height="311"/>
-        </div>
-      );
-    } 
   };
-  renderVideo =()=>{
-    if (this.props.post.videourl==""){
+  renderImage = () => {
+    if (this.props.post.imageurl === "") {
       return null;
-    }
-    else {
+    } else {
       return (
-        <div >
-          <iframe width="420" height="315" src={this.props.post.videourl}>Video</iframe>
+        <div className="img-style">
+          <img
+            className="responsive-img"
+            src={this.props.post.imageurl}
+            width="420"
+            height="311"
+            alt="pic"
+          />
         </div>
       );
-    } 
+    }
+  };
+  renderVideo = () => {
+    if (this.props.post.videourl === "") {
+      return null;
+    } else {
+      return (
+        <div className="video-container">
+          <iframe
+            className="responsive-video"
+            width="420"
+            height="315"
+            src={this.props.post.videourl}
+            title="video-title"
+            frameBorder="0"
+            allowFullScreen
+          >
+            Video
+          </iframe>
+        </div>
+      );
+    }
   };
   editPost = e => {
     e.preventDefault();
-    this.props.history.push(`/postEdit/${this.props.id}`)
+    this.props.history.push(`/postEdit/${this.props.id}`);
   };
   render() {
     const { post, userId } = this.props;
@@ -92,7 +106,7 @@ class PostDetails extends Component {
                 >
                   <i className="material-icons">arrow_upward</i>
                 </button>
-                <p className="white-text" >
+                <p className="white-text">
                   {"  "}
                   {post.votes}
                 </p>
@@ -115,8 +129,7 @@ class PostDetails extends Component {
                     {editButton}
                   </span>
                   {this.renderImage()}
-                  <br>
-                  </br>
+                  <br></br>
                   {this.renderVideo()}
                   <p className="card-content">{post.content}</p>
                   <div className="white-text lighten-2">

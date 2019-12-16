@@ -10,7 +10,6 @@ body {
   height: 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
-
 }
 
 code {
@@ -27,28 +26,34 @@ code {
   overflow: auto;
 }
 
-form{
+form {
   padding: 20px;
   margin-top: 60px;
   background: rgba(10, 9, 9, 0.849);
 }
 
-form button, form h5{
+form button,
+form h5 {
   margin: 20px;
 }
 .newComment {
   padding-bottom: 20px;
 }
-.card { background-color: rgba(252, 248, 248, 0.411); }
-.card-header, .card-footer { opacity: 0}
+.card {
+  background-color: rgba(252, 248, 248, 0.411);
+}
+.card-header,
+.card-footer {
+  opacity: 0;
+}
 
-.img-style{
+.img-style {
   display: flex;
   max-width: fit-content;
-  border:2px solid #a5a2a2;
-  height:315px;
+  border: 2px solid #a5a2a2;
+  height: 315px;
 }
-.position{
+.position {
   position: relative;
-  left: 10% !important;
+  left: 15% !important;
 }

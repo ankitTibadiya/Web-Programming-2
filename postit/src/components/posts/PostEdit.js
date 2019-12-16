@@ -6,14 +6,13 @@ import { compose } from "redux";
 
 class PostEdit extends Component {
   state = {
-    title: "",
-    content: "",
-    imageurl: "",
-    videourl: ""
+    title: this.props.post.title,
+    content: this.props.post.content,
+    imageurl: this.props.post.imageurl,
+    videourl: this.props.post.videourl
   };
   handleChange = e => {
     this.setState({
-      ...this.props.post,
       [e.target.id]: e.target.value
     });
   };
