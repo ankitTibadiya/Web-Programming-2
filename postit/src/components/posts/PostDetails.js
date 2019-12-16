@@ -92,7 +92,7 @@ class PostDetails extends Component {
                 >
                   <i className="material-icons">arrow_upward</i>
                 </button>
-                <p className="white-text" style={{ position:"relative", marginLeft:"10px" }}>
+                <p className="white-text" >
                   {"  "}
                   {post.votes}
                 </p>
