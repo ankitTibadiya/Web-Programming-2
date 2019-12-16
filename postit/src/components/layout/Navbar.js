@@ -11,8 +11,7 @@ class Navbar extends Component {
     const links = auth.uid ? <Loggedin profile={profile} /> : <Loggedout />;
     return (
       <nav className="nav-wrapper transparent">
-        <div className="container" style={{ width: "-webkit-fill-available" }} >
-          <Link to="/" className="brand-logo  position"  >
+          <Link to="/" className="brandLogo" style={{paddingLeft: "40px", position:"relative"}} >
             <img style={{ marginBottom: "-9px" }}
               src={postIticon}
               alt="icon"
@@ -23,7 +22,6 @@ class Navbar extends Component {
             postIT
           </Link>
           {auth.isLoaded && links}
-        </div>
       </nav>
     );
   }
