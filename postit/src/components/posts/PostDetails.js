@@ -13,12 +13,12 @@ class PostDetails extends Component {
     console.log("POstSumma", this.props.id, this.props.post.votes);
     e.preventDefault();
     this.props.addVote(this.props.id, this.props.post.votes + 1);
-    // this.refs.btn1.setAttribute("disabled","disabled")
+    this.refs.btn1.setAttribute("disabled","disabled")
   };
   downVote = e => {
     e.preventDefault();
     this.props.addVote(this.props.id, this.props.post.votes - 1);
-    // this.refs.btn.setAttribute("disabled","disabled")
+    this.refs.btn.setAttribute("disabled","disabled")
   };
   deletePost = e => {
     e.preventDefault();

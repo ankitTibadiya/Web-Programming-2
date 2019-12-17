@@ -16,9 +16,12 @@ class CreateComment extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.createComment(this.state, this.props.id);
-    this.setState((state, props) => ({
-      state: ""
-    }));
+    this.setState({
+      content:''
+    })
+    // this.setState((state, props) => ({
+    //   state: ""
+    // }));
     // this.props.history.push("/post/",this.props.id);
   };
   render() {
@@ -33,6 +36,7 @@ class CreateComment extends Component {
                 id="content"
                 className="materialize-textarea white-text"
                 onChange={this.handleChange}
+                value={this.state.content}
                 placeholder="Add a comment here..."
                 required
               />
